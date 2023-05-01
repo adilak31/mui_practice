@@ -74,6 +74,12 @@ export const TablePage = () => {
                                         </NavLink>
 
                                     </Button>
+                                    <Button>
+                                        <NavLink to={"/edit/" + post.id}>
+                                            edit
+                                        </NavLink>
+
+                                    </Button>
                                 </TableCell>
 
                             </TableRow>
