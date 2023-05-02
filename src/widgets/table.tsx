@@ -3,7 +3,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { Button, OutlinedInput, Paper, Skeleton, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
 import axios from 'axios';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { Status } from '../app/Status';
 
 export interface Post {
@@ -15,6 +15,7 @@ export interface Post {
 export const TablePage = () => {
     const [posts, setPosts] = useState<Post[]>([])
     const [status, setStatus] = useState<Status>('init')
+    const navigate = useNavigate()
     const fetchPosts = async () => {
         try {
             setStatus("loading")
@@ -44,6 +45,9 @@ export const TablePage = () => {
         {status === 'success' && posts.length < 1 ? <div> пустой лист </div> : null}
         {status === 'success' && posts.length > 0 ?
             <TableContainer >
+                <Button onClick={() => navigate("/create")}>
+                    Create
+                </Button>
                 <Table>
 
                     <TableHead>
